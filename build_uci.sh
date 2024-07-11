@@ -8,10 +8,11 @@ do_init() {
 }
 
 build_libubox() {
+	# sudo apt install libjson-c-dev
 	cd $TOPDIR
 	git clone http://git.openwrt.org/project/libubox.git
 	cd libubox
-	cmake -DBUILD_LUA=OFF -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install
+	cmake -DBUILD_LUA=OFF -DUNIT_TESTING=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=../install
 	make && make install
 	cd $TOPDIR
 }
